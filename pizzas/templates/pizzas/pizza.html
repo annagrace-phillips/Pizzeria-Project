@@ -4,7 +4,9 @@
 
 <body>
 <div class="content">
-<p>Pizza: {{ pizza }}</p>
+<h3>
+    <p>Pizza: {{ pizza }}</p>
+</h3>
 </div>
 <h3>Toppings:</h3> 
 
@@ -19,10 +21,8 @@
     {% endfor %}
 </ul>
 
-{% if pizza.header_image %}
 
 <img src="{{ pizza.header_image.url }}" class="img-thumbnail" style="max-height: height 200px" alt="">
-{% endif %}
 
 
 <p>Comments:</p>
