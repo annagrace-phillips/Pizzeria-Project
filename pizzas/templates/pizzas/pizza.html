@@ -2,16 +2,45 @@
 
 {% block content %}
 
-<p>Pizza Name: {{ pizza }}</p>
+<body>
+<div class="content">
+<p>Pizza: {{ pizza }}</p>
+</div>
+<h3>Toppings:</h3> 
 
-<ul>
+<ul> 
     {% for topping in toppings %}
     <li>
-        <p>{{topping.name | linebreaks }}</p>
+        <p>{{ topping.name | linebreaks }}</p>
     </li>
+
     {% empty %}
-    <li>No toppings have been added yet.</li>
+    <li>No toppings have been added for this pizza yet.</li>
     {% endfor %}
 </ul>
+
+{% if pizza.header_image %}
+
+<img src="{{ pizza.header_image.url }}" class="img-thumbnail" style="max-height: height 200px" alt="">
+{% endif %}
+
+
+<p>Comments:</p>
+<ul>
+    {% for new_comment in new_comments %}
+    <li>
+        <p>{{ new_comment.text | linebreaks }}</p>
+    </li>
+    
+    {% empty %}
+    <li>No comments have been added for this pizza yet.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'pizzas:new_comment' pizza.id %}">Add a new comment</a>
+
+<br>
+</body>
+<br>
 
 {% endblock content %}
