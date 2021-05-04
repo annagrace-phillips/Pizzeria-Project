@@ -18,3 +18,11 @@ class Topping(models.Model):
 
     def __str__(self):
         return self.name
+
+class Comment(models.Model):
+    comment = models.CharField(max_length=900)
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.comment
